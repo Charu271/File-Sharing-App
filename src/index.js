@@ -5,6 +5,8 @@ const app = express();
 const connectDb = require("./db/mongoose.js");
 connectDb();
 
+app.use(express.json());
+
 const viewsPath = path.join(__dirname, "./views");
 app.set("views", viewsPath);
 app.set("view engine", "ejs");

@@ -41,4 +41,40 @@ router.post("/", async (req, res) => {
   });
 });
 
+router.post("/send", async (req, res) => {
+  try {
+    const { emailFrom, emailTo, uuid } = req.body;
+    if (!emailFrom || !emailTo || !uuid) {
+      return res.status(422).send({ error: "All fields are required" });
+    }
+
+    const file = await File.findOne({ uuid });
+    if (!file) {
+      return res.status(404).send({ error: "Link has expired" });
+    }
+    if (file.sender) {
+      return res.status(422).send({ error: "Email already sent" });
+    }
+    file.sender = emailFrom;
+    file.reciever = emailTo;
+    await file.save();
+    const sendMail = require("../services/emailSender");
+    sendMail({
+      sendTo: emailTo,
+      sendFrom: emailFrom,
+      subject: "File Sharing",
+      text: `${emailFrom} shared a file with you`,
+      html: require("../services/emailTemplate")({
+        emailFrom,
+        size: parseInt(file.size / 1000) + " KB",
+        expires: "24 hours",
+        downloadLink: `${process.env.APP_BASEURL}/files/download/${file.uuid}?source=email`,
+      }),
+    });
+    res.send();
+  } catch (e) {
+    return res.status(500).send();
+  }
+});
+
 module.exports = router;

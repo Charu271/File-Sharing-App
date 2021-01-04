@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     )}${path.extname(file.originalname)}`;
     cb(null, uniqueName);
   },
-  destination: (req, file, cb) => cb(null, "src/uploads/"),
+  destination: (req, file, cb) => cb(null, `src/uploads/`),
 });
 
 let upload = multer({
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     const file = new File({
       filename: req.file.filename,
       size: req.file.size,
-      path: req.file.destination,
+      path: `${req.file.destination}${req.file.filename}`,
       uuid: uuidv4(),
     });
     const response = await file.save();

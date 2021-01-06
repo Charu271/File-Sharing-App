@@ -1,9 +1,15 @@
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 const app = express();
 const connectDb = require("./db/mongoose.js");
 connectDb();
+
+const corsOptions = {
+  origin: process.env.ALLOWED_PORTS.split(","),
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

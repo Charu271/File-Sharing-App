@@ -12,6 +12,8 @@ app.set("views", viewsPath);
 app.set("view engine", "ejs");
 
 const fileRouter = require("./routes/file");
+const publicDirectoryPath = path.join(__dirname, "./public");
+app.use(express.static(publicDirectoryPath));
 app.use("/api/files", fileRouter);
 app.use("/files", require("./routes/show.js"));
 app.use("/files/download", require("./routes/download"));

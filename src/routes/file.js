@@ -74,7 +74,7 @@ router.post("/send", async (req, res) => {
     res.send("Email sent successfully");
   } catch (e) {
     console.log(e.message);
-    return res.status(500).send();
+    return res.status(500).send(e);
   }
 });
 

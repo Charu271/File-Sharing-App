@@ -59,7 +59,7 @@ router.post("/send", async (req, res) => {
     file.reciever = emailTo;
     await file.save();
     const sendMail = require("../services/emailSender");
-    sendMail({
+    await sendMail({
       sendTo: emailTo,
       sendFrom: emailFrom,
       subject: "File Sharing",
@@ -71,8 +71,9 @@ router.post("/send", async (req, res) => {
         downloadLink: `${process.env.APP_BASEURL}/files/download/${file.uuid}?source=email`,
       }),
     });
-    res.send();
+    res.send("Email sent successfully");
   } catch (e) {
+    console.log(e.message);
     return res.status(500).send();
   }
 });

@@ -1,10 +1,14 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
+const Cron = require("node-cron");
 const port = process.env.PORT || 3000;
 const app = express();
 const connectDb = require("./db/mongoose.js");
 connectDb();
+const deleteFiles = require("./script");
+
+Cron.schedule("0 2 * * *", deleteFiles);
 
 const corsOptions = {
   origin: process.env.ALLOWED_PORTS.split(","),

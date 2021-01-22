@@ -17,7 +17,7 @@
       <div class="row">
         <div class="card">
           <img src="../img/download.svg" class="download-img" />
-          <% if(error){ %>
+          <% if(<%= error %>){ %>
           <p>Not found</p>
           <% } else { %>
           <p class="download-text">Your file is ready to download</p>

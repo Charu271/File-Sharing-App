@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Sharing App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <h1>File Sharing App</h1>
+      </div>
+
+      <div class="row outer-container">
+        <div class="col-10 offet-1 col-lg-6 offset-lg-0">
+          <img src="img/upload.svg" class="upload" />
+        </div>
+        <div class="col-9 offset-1 col-lg-5 offset-lg-0 drop-container">
+          <div class="drop-zone">
+            <div class="icons">
+              <div class="icon-left">
+                <img src="img/file.svg" class="img" />
+              </div>
+              <div class="icon-center">
+                <img src="img/file.svg" class="img" />
+              </div>
+              <div class="icon-right">
+                <img src="img/file.svg" class="img" />
+              </div>
+            </div>
+            <div class="text">
+              <input type="file" class="inputFile" />
+              Drag the files to upload or <span class="browse">browse</span>
+            </div>
+          </div>
+
+          <div class="progress-container">
+            <div class="background-progress"></div>
+            <div class="inner-progress">
+              <div class="progress-percent">
+                Uploading<br /><span class="percent">0 %</span>
+              </div>
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+          <div class="shareFile">
+            <p class="expire">Link expires in 24 hours</p>
+            <div class="input-container">
+              <input type="text" class="link-container" readonly />
+              <img class="copy-icon" src="img/copy.svg" />
+            </div>
+            <!-- <p class="send-mail">Send via Email</p>
+            <div class="email-container">
+              <form class="email-form">
+                <div class="field">
+                  <label for="sender">Your email</label>
+                  <input
+                    type="text"
+                    class="field-input"
+                    name="to-email"
+                    id="sender"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="reciever">Reciever's email</label>
+                  <input
+                    type="text"
+                    class="field-input"
+                    name="from-email"
+                    id="reciever"
+                    required
+                  />
+                </div>
+                <input type="submit" value="Send" class="send-button" />
+              </form>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row outer-toast"><div class="toasts">Some ,message</div></div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/script.js"></script>
+</html>

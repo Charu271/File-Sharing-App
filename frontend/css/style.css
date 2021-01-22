@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+html {
+  overflow-x: hidden;
+}
+html,
+.container-fluid {
+  background-color: #fff2e9;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fec8c1;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #feb2a8;
+}
+h1 {
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 2.5rem;
+  font-family: Lobster;
+  margin-top: 12px;
+  color: #fe9c8f;
+}
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 4%;
+}
+.drop-zone {
+  border: 3px dashed#faccc6;
+  padding: 10% 6%;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.icons {
+  display: flex;
+}
+.icon-left,
+.icon-center {
+  position: absolute;
+  transition: transform 500ms ease;
+}
+.icon-right {
+  transition: transform 500ms ease;
+}
+.img {
+  height: 50px;
+  width: 50px;
+}
+.text {
+  position: relative;
+  margin-top: 5%;
+}
+.icon-center {
+  z-index: 2;
+}
+.dragged.drop-zone {
+  background-color: #fff2e9;
+  border: 3px dashed #fe9c8f;
+}
+.dragged .icons .icon-left {
+  transform: rotate(-10deg) translateX(-20px) scale(0.9);
+  filter: grayscale(0.2);
+}
+.dragged .icons .icon-right {
+  transform: rotate(10deg) translateX(20px) scale(0.9);
+  filter: grayscale(0.2);
+}
+.dragged .icons .icon-center {
+  transform: translateY(-5px);
+  filter: grayscale(0.2);
+}
+.upload {
+  width: 95%;
+}
+
+.drop-container {
+  padding: 2%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px rgb(197, 192, 192);
+}
+.inputFile {
+  display: none;
+}
+.text {
+  font-size: 1.3rem;
+}
+.browse {
+  color: blue;
+  cursor: pointer;
+}
+.browse:hover {
+  font-weight: 500;
+}
+.progress-container {
+  margin-top: 15px;
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid #faccc6;
+  position: relative;
+  display: none;
+}
+.background-progress {
+  width: 0%;
+  height: 100%;
+  background: #fff2e9;
+  border-radius: 10px 0px 0px 10px;
+  transition: width 0.25s linear;
+  box-sizing: border-box;
+  position: absolute;
+}
+.inner-progress {
+  margin: 10px 15px;
+  position: absolute;
+  z-index: 1;
+  width: calc(100% - 30px);
+}
+.percent {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-left: 5px;
+  margin-top: -10px;
+}
+.progress-bar {
+  background: #fe9c8f;
+  width: calc(100% - 5px);
+  height: 4px;
+  margin-left: 5px;
+  border-radius: 20px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s linear;
+}
+.expire,
+.send-mail {
+  text-align: center;
+  opacity: 0.9;
+}
+.send-mail {
+  margin-top: 20px;
+}
+.shareFile {
+  width: 100%;
+  margin-top: 25px;
+  position: relative;
+  display: none;
+}
+.input-container {
+  width: 100%;
+}
+.link-container {
+  border: 2px dashed#faccc6;
+  background-color: #fdf2f1;
+  width: 100%;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 1.1rem;
+  outline: none;
+  opacity: 0.8;
+}
+.copy-icon {
+  right: 1.7%;
+  margin-top: 1.5%;
+  background-color: #fdf2f1;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  padding: 0.5%;
+}
+.field {
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+.email-container {
+  border: 2px solid #faccc6;
+  padding: 3.5% 9%;
+  width: 100%;
+}
+.email-container label {
+  font-size: 1.1rem;
+  padding: 2px 5px;
+  font-weight: 500;
+}
+.email-container .field-input {
+  border: none;
+  padding: 2px 5px;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 1px solid #ffcac3;
+  outline: none;
+}
+.email-container form {
+  width: 100%;
+}
+.send-button {
+  background: #fcdad5;
+  padding: 8px 40px;
+  font-size: 1rem;
+  color: rgb(100, 92, 92);
+  border-radius: 4px;
+  display: block;
+  margin: auto;
+  margin-top: 5%;
+  border: none;
+  outline: none;
+}
+.outer-toast {
+  width: 100%;
+}
+.toasts {
+  bottom: 10px;
+  right: 50%;
+  position: absolute;
+  transform: translate(60%, 0px);
+  background: #ff8c7c;
+  padding: 1% 3.5%;
+  border-radius: 7.5px;
+  color: rgb(48, 43, 43);
+  margin-bottom: 4px;
+  display: none;
+  transition: transform 0.5s ease-in-out;
+  animation: move 0.05s ease-in-out;
+}
+@keyframes move {
+  from {
+    bottom: 0px;
+  }
+  to {
+    bottom: 10px;
+  }
+}
+@media only screen and (max-width: 995px) {
+  .drop-container {
+    margin-top: 8%;
+    margin-bottom: 10%;
+  }
+}

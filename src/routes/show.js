@@ -10,7 +10,7 @@ router.get("/:uuid", async (req, res) => {
     }
     res.render("download", {
       filename: file.filename,
-      size: file.size,
+      size: Math.round(file.size / 1000),
       uuid: file.uuid,
       downloadLink: `${process.env.APP_BASEURL}/files/download/${file.uuid}`,
     });

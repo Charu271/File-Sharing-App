@@ -16,14 +16,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json());
-
+const publicDirectoryPath = path.join(__dirname, "./public");
+console.log(publicDirectoryPath);
+app.use(express.static(publicDirectoryPath));
 const viewsPath = path.join(__dirname, "./views");
+
+console.log(viewsPath);
 app.set("views", viewsPath);
 app.set("view engine", "ejs");
 
 const fileRouter = require("./routes/file");
-const publicDirectoryPath = path.join(__dirname, "./public");
-app.use(express.static(publicDirectoryPath));
 app.use("/api/files", fileRouter);
 app.use("/files", require("./routes/show.js"));
 app.use("/files/download", require("./routes/download"));

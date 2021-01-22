@@ -3,11 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <title>Download</title>
   </head>
   <body>
-    <a href="<%= downloadLink %>">Download</a>
-    <button onClick="download">Download</button>
+    <div class="container-fluid">
+      <div class="row"><h1>File Sharing App</h1></div>
+      <div class="row">
+        <div class="card">
+          <img src="../img/download.svg" class="download-img" />
+          <p class="download-text">Your file is ready to download</p>
+          <p class="expire">Link expires in 24 hours</p>
+          <p class="filename"><%= filename %></p>
+          <p class="size"><%= size %> Kb</p>
+          <a href="<%= downloadLink %>" class="download-link">Download</a>
+        </div>
+      </div>
+    </div>
   </body>
   <script>
     const download = () => {};

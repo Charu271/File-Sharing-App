@@ -13,14 +13,19 @@
   <body>
     <div class="container-fluid">
       <div class="row"><h1>File Sharing App</h1></div>
+
       <div class="row">
         <div class="card">
           <img src="../img/download.svg" class="download-img" />
+          <% if(error){ %>
+          <p>Not found</p>
+          <% } else { %>
           <p class="download-text">Your file is ready to download</p>
           <p class="expire">Link expires in 24 hours</p>
           <p class="filename"><%= filename %></p>
           <p class="size"><%= size %> Kb</p>
           <a href="<%= downloadLink %>" class="download-link">Download</a>
+          <% } %>
         </div>
       </div>
     </div>

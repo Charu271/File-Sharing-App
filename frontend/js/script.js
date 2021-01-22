@@ -63,7 +63,7 @@ const uploadFile = async () => {
   formData.append("myfile", file);
   console.log(formData);
   const response = await axios.post(
-    "https://share-circle.herokuapp.com/api/files",
+    "https://cors-anywhere.herokuapp.com/https://share-circle.herokuapp.com/api/files",
     formData,
     {
       onUploadProgress: (e) => {

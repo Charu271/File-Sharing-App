@@ -37,6 +37,11 @@ router.post("/", async (req, res) => {
       uuid: uuidv4(),
     });
     const response = await file.save();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin,X-Requested-With,Content-Type,Accept"
+    );
     res.json({ file: `${process.env.APP_BASEURL}/files/${response.uuid}` });
   });
 });

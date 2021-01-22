@@ -17,8 +17,8 @@
       <div class="row">
         <div class="card">
           <img src="../img/download.svg" class="download-img" />
-          <% if(<%= error %>){ %>
-          <p>Not found</p>
+          <% if( locals.error ){ %>
+          <p class="download-text"><%= error %></p>
           <% } else { %>
           <p class="download-text">Your file is ready to download</p>
           <p class="expire">Link expires in 24 hours</p>

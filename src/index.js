@@ -8,7 +8,7 @@ const connectDb = require("./db/mongoose.js");
 connectDb();
 const deleteFiles = require("./script");
 
-Cron.schedule("0 2 * * *", deleteFiles);
+Cron.schedule("51 7 * * *", deleteFiles);
 
 const corsOptions = {
   origin: process.env.ALLOWED_PORTS.split(","),

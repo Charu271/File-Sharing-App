@@ -6,7 +6,7 @@ const deleteFiles = async () => {
   if (files.length > 0) {
     for (const file of files) {
       try {
-        fs.unlinkSync(file.path);
+        //fs.unlinkSync(file.path);
         await file.remove();
         console.log(`${file.name} has been removed`);
       } catch (e) {

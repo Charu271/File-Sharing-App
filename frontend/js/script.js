@@ -62,35 +62,42 @@ const uploadFile = async () => {
   const file = fileInput.files[0];
   formData.append("myfile", file);
   console.log(formData);
-  const response = await axios.post(
-    "https://cors-anywhere.herokuapp.com/https://share-circle.herokuapp.com/api/files",
-    formData,
-    {
-      onUploadProgress: (e) => {
-        //console.log(e);
+  axios
+    .post(
+      "https://cors-anywhere.herokuapp.com/https://share-circle.herokuapp.com/api/files",
+      formData,
+      {
+        onUploadProgress: (e) => {
+          //console.log(e);
 
-        var percentage = Math.round((e.loaded / e.total) * 100);
-        if (percentage === 100) {
-          fileInput.value = "";
-          backgroundProgress.style.borderRadius = "10px";
-        }
-        backgroundProgress.style.width = `${percentage}%`;
-        percent.innerHTML = `${percentage} %`;
-        progressBar.style.transform = `scaleX(${percentage / 100})`;
-        console.log(percentage);
-      },
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
-  if (response.data.file) {
-    linkContainer.value = response.data.file;
-    showFile();
-  } else {
-    showToast("Something went wrong");
-  }
-  console.log(response);
+          var percentage = Math.round((e.loaded / e.total) * 100);
+          if (percentage === 100) {
+            fileInput.value = "";
+            backgroundProgress.style.borderRadius = "10px";
+            //showFile();
+          }
+          backgroundProgress.style.width = `${percentage}%`;
+          percent.innerHTML = `${percentage} %`;
+          progressBar.style.transform = `scaleX(${percentage / 100})`;
+          console.log(percentage);
+        },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+      if (response.data.file) {
+        console.log(response);
+        linkContainer.value = response.data.file;
+        showFile();
+      } else {
+        showToast("Something went wrong");
+      }
+    })
+    .catch((err) => console.log(err));
 };
 function showFile() {
   progressContainer.style.display = "none";

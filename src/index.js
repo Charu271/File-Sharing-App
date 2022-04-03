@@ -11,7 +11,9 @@ const deleteFiles = require("./script");
 Cron.schedule("58 11 * * *", deleteFiles);
 
 const corsOptions = {
-  origin: process.env.ALLOWED_PORTS.split(","),
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 

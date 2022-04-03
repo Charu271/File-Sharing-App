@@ -64,7 +64,8 @@ const uploadFile = async () => {
   console.log(formData);
   axios
     .post(
-      "https://cors-anywhere.herokuapp.com/https://share-circle.herokuapp.com/api/files",
+      "https://share-circle.herokuapp.com/api/files",
+      // "http://localhost:3000/api/files",
       formData,
       {
         onUploadProgress: (e) => {
@@ -101,7 +102,7 @@ const uploadFile = async () => {
 };
 function showFile() {
   progressContainer.style.display = "none";
-
+  console.log("show");
   fileShare.style.display = "block";
 }
 copyIcon.addEventListener("click", () => {

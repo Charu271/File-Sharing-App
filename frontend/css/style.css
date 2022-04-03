@@ -220,6 +220,7 @@ h1 {
 }
 .outer-toast {
   width: 100%;
+  position: relative;
 }
 .toasts {
   bottom: 10px;
@@ -246,6 +247,6 @@ h1 {
 @media only screen and (max-width: 995px) {
   .drop-container {
     margin-top: 8%;
-    margin-bottom: 10%;
+    margin-bottom: 4%;
   }
 }
